@@ -12,6 +12,7 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
  * @version base
 */
 
+
 public class Stanza {
 	
 	static final private int NUMERO_MASSIMO_DIREZIONI = 4;
