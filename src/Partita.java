@@ -11,17 +11,19 @@
 
 public class Partita {
 
-	static final private int CFU_INIZIALI = 20;
+//	static final private int CFU_INIZIALI = 20;
 
 	private Labirinto labirinto;
+	private Giocatore giocatore;
 	private boolean finita;
-	private int cfu;
+	
 	
 	public Partita(){
 		labirinto = new Labirinto();                     //inv labirinto
 		labirinto.creaStanze();
+		giocatore = new Giocatore(); 
 		this.finita = false;
-		this.cfu = CFU_INIZIALI;
+//		this.cfu = CFU_INIZIALI;
 	}
 
 	public Labirinto getLabirinto() {
@@ -32,25 +34,33 @@ public class Partita {
 		this.labirinto = labirinto;                     
 	}
 	
+	public Giocatore getGiocatore() {                 //GIOCATORE
+		return giocatore;
+	}
+	
+	public void setGiocatore(Giocatore giocatore) {    //GIOCATORE
+		this.giocatore = giocatore;
+	}
+	
 	
 	public boolean vinta() {
 		return this.labirinto.getStanzaCorrente()== this.labirinto.getStanzaVincente();
 	}
 	
 	public boolean isFinita() {
-		return finita || vinta() || (cfu == 0);
+		return finita || vinta() || (giocatore.getCfu() == 0);
 	}
 	
 	public void setFinita() {
 		this.finita = true;
 	}
 
-	public int getCfu() {
-		return this.cfu;
-	}
-
-	public void setCfu(int cfu) {
-		this.cfu = cfu;		
-	}	
+//	public int getCfu() {
+//		return this.cfu;
+//	}
+//
+//	public void setCfu(int cfu) {
+//		this.cfu = cfu;		
+//	}	
 	
 }
