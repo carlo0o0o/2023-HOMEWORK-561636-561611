@@ -1,4 +1,6 @@
 package it.uniroma3.diadia.ambienti;
+import static org.junit.Assert.assertNotNull;
+
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
@@ -130,9 +132,10 @@ public class Stanza {
     		if (direzione!=null)
     			risultato.append(" " + direzione);
     	risultato.append("\nAttrezzi nella stanza: ");
-    	//for (Attrezzo attrezzo : this.attrezzi) {
-    		//risultato.append(attrezzo.toString()+" ");
-    	//}
+    	for (Attrezzo attrezzo : this.attrezzi) {
+    		if (attrezzo!=null)
+    			risultato.append(attrezzo.toString()+" ");
+    	}
     	return risultato.toString();
     }
 
@@ -144,7 +147,7 @@ public class Stanza {
 		boolean trovato;
 		trovato = false;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
+			if (attrezzo!=null && attrezzo.getNome().equals(nomeAttrezzo))
 				trovato = true;
 		}
 		return trovato;
@@ -160,7 +163,7 @@ public class Stanza {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
+			if ( attrezzo!=null  &&   attrezzo.getNome().equals(nomeAttrezzo))
 				attrezzoCercato = attrezzo;
 		}
 		return attrezzoCercato;	
@@ -172,8 +175,23 @@ public class Stanza {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		// TODO da implementare
-		return false;
+		
+		if(attrezzo!=null){
+			int i = 0;
+			for(Attrezzo a : this.attrezzi) {
+				if(a != null) {
+					if(a.getNome().equals(attrezzo.getNome())) {
+						this.attrezzi[i] = null;
+						this.numeroAttrezzi--;
+					}
+				}
+				i++;
+
+			}
+			return true;
+		}
+		else
+			return false;
 	}
 
 

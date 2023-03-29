@@ -18,12 +18,14 @@ public class Partita {
 	private Labirinto labirinto;
 	private Giocatore giocatore;
 	private boolean finita;
+	private Stanza stanzaCorrente;
 	
 	
 	public Partita(){
 		labirinto = new Labirinto();                     //inv labirinto
 		labirinto.creaStanze();
 		giocatore = new Giocatore(); 
+		this.stanzaCorrente = this.labirinto.getIngresso();
 		this.finita = false;
 //		this.cfu = CFU_INIZIALI;
 	}
@@ -46,7 +48,7 @@ public class Partita {
 	
 	
 	public boolean vinta() {
-		return this.labirinto.getStanzaCorrente()== this.labirinto.getStanzaVincente();
+		return this.getStanzaCorrente()== this.labirinto.getStanzaVincente();
 	}
 	
 	public boolean isFinita() {
@@ -55,6 +57,14 @@ public class Partita {
 	
 	public void setFinita() {
 		this.finita = true;
+	}
+	
+	public void setStanzaCorrente(Stanza stanzaCorrente) {
+		this.stanzaCorrente = stanzaCorrente;
+	}
+
+	public Stanza getStanzaCorrente() {
+		return this.stanzaCorrente;
 	}
 
 //	public int getCfu() {
