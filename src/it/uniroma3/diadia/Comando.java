@@ -18,6 +18,7 @@ public class Comando {
     private String nome;
     private String parametro;
 
+    
     public Comando(String istruzione) {
 		Scanner scannerDiParole = new Scanner(istruzione);
 		// prima parola: nome del comando
