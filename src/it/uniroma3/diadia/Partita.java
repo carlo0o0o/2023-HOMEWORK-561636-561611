@@ -27,7 +27,7 @@ public class Partita {
 		giocatore = new Giocatore(); 
 		this.stanzaCorrente = this.labirinto.getIngresso();
 		this.finita = false;
-//		this.cfu = CFU_INIZIALI;
+
 	}
 
 	public Labirinto getLabirinto() {
@@ -66,13 +66,10 @@ public class Partita {
 	public Stanza getStanzaCorrente() {
 		return this.stanzaCorrente;
 	}
-
-//	public int getCfu() {
-//		return this.cfu;
-//	}
-//
-//	public void setCfu(int cfu) {
-//		this.cfu = cfu;		
-//	}	
 	
+	public boolean giocatoreIsVivo() {
+		if((giocatore.getCfu())>0)
+			return true;
+		return false;
+	}
 }

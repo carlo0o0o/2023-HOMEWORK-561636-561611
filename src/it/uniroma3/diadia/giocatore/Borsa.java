@@ -66,12 +66,11 @@ public class Borsa {
 				if(att != null) {
 					if(att.getNome().equals(nomeAttrezzo)) {
 						a = att;
-						this.attrezzi[i] = null;
+						this.attrezzi[i] = this.attrezzi[i+1];   //rimozione elemneto array 
 						this.numeroAttrezzi--;
 					}
 				}
 				i++;
-
 			}
 		}
 		
