@@ -29,6 +29,7 @@ class StanzaTest {
 		this.s1.addAttrezzo(martello);
 	}
 	
+	
 	@Test
 	public void impostaStanzaAdiacenteTest() {
 		s1.impostaStanzaAdiacente("nord", s2);

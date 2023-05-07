@@ -11,6 +11,7 @@ class ComandoPosaTest {
 	private Attrezzo pala;
 	private Partita partita;
 	
+	
 	@BeforeEach
 	public void setUp() {
 		this.partita = new Partita();

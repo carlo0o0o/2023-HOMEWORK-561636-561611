@@ -61,6 +61,7 @@ class BorsaTest {
 		assertEquals(null, zaino.removeAttrezzo(martello.getNome()));
 	}
 	
+	
 	@Test
 	void addPiuDiDieciAttrezziTest() {        //11 attrezzi in borsa
 		zaino.addAttrezzo(martello);
