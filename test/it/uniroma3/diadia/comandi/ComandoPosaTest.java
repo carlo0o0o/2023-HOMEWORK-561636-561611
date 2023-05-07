@@ -18,7 +18,7 @@ class ComandoPosaTest {
 		this.partita.getGiocatore().getBorsa().addAttrezzo(pala);
 	}
 	@Test
-	void assenzaInBorsaTest() {   //verifica che l'attrezzo sia stato levato dalla borsa correttamente
+	void assenzaInBorsaTest() {  	 //verifica che l'attrezzo sia stato levato dalla borsa correttamente
 		ComandoPosa cmd = new ComandoPosa(pala.getNome());
 		cmd.esegui(this.partita);
 		assertFalse(this.partita.getGiocatore().getBorsa().hasAttrezzo(pala.getNome()),"mi aspettavo che l'attrezzo non fosse presente nella borsa");
