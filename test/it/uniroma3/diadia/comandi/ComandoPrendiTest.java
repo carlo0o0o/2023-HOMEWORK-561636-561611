@@ -1,5 +1,7 @@
 package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.giocatore.Borsa;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -13,19 +15,42 @@ class ComandoPrendiTest {
 	private Partita partita;
 	private Attrezzo test1;
 	private String nomeAttrezzo;
-
+	private Labirinto labirinto = null;
 	
 	@BeforeEach
 	public void setUp() {
-		this.partita = new Partita();
+		this.labirinto = new LabirintoBuilder()
+				.addStanzaIniziale("atrio")
+				.addAttrezzo("osso",1)
+				.addAttrezzo("passepartout", 4)
+				.addStanzaBuia("Aula N11","lanterna")
+				.addStanzaBloccata("Aula N10", "passepartout", "ovest")
+				.addAttrezzo("lanterna", 3)
+				.addStanzaMagica("Laboratorio Campus", 1)
+				.addStanzaVincente("Biblioteca")
+				.addAdiacenza("atrio", "Biblioteca", "nord")
+				.addAdiacenza("atrio", "Aula N11", "est")
+				.addAdiacenza("atrio", "Aula N10", "sud")
+				.addAdiacenza("atrio", "Laboratorio Campus", "ovest")
+				.addAdiacenza("Aula N11", "Laboratorio Campus", "est")
+				.addAdiacenza("Aula N11", "atrio", "ovest")
+				.addAdiacenza("Aula N10", "atrio", "nord")
+				.addAdiacenza("Aula N10", "Aula N11", "est")
+				.addAdiacenza("Aula N10", "Laboratorio Campus", "ovest")
+				.addAdiacenza("Laboratorio Campus", "atrio", "est")
+				.addAdiacenza("Laboratorio Campus", "Aula N11", "ovest")
+				.addAdiacenza("Biblioteca", "atrio", "sud")
+				.getLabirinto();
+	
+		this.partita = new Partita(this.labirinto);
 		this.test1 = new Attrezzo("test1",3);
-		this.partita.getStanzaCorrente().addAttrezzo(test1);
+		this.partita.getLabirinto().getIngresso().addAttrezzo(test1);
 		this.nomeAttrezzo = test1.getNome();
 	}
 	
 	@Test    //se l'attrezzo nel caso base si trova all'interno della stanza 
 	void esistenzaTest() {
-		assertTrue(this.partita.getStanzaCorrente().hasAttrezzo(nomeAttrezzo), "mi aspettavo che l'attrezzo stesse nella stanza");
+		assertTrue(this.partita.getLabirinto().getIngresso().hasAttrezzo(nomeAttrezzo), "mi aspettavo che l'attrezzo stesse nella stanza");
 	}
 	
 	@Test    //se l'attrezzo è stato rimosso correttamente dalla stanza test

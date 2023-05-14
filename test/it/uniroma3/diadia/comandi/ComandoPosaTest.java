@@ -1,10 +1,14 @@
 package it.uniroma3.diadia.comandi;
-import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.Partita;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import it.uniroma3.diadia.Partita;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
+import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 class ComandoPosaTest {
 
@@ -14,15 +18,38 @@ class ComandoPosaTest {
 	
 	@BeforeEach
 	public void setUp() {
-		this.partita = new Partita();
+		Labirinto labirinto = new LabirintoBuilder()
+				.addStanzaIniziale("atrio")
+				.addAttrezzo("osso",1)
+				.addAttrezzo("passepartout", 4)
+				.addStanzaBuia("Aula N11","lanterna")
+				.addStanzaBloccata("Aula N10", "passepartout", "ovest")
+				.addAttrezzo("lanterna", 3)
+				.addStanzaMagica("Laboratorio Campus", 1)
+				.addStanzaVincente("Biblioteca")
+				.addAdiacenza("atrio", "Biblioteca", "nord")
+				.addAdiacenza("atrio", "Aula N11", "est")
+				.addAdiacenza("atrio", "Aula N10", "sud")
+				.addAdiacenza("atrio", "Laboratorio Campus", "ovest")
+				.addAdiacenza("Aula N11", "Laboratorio Campus", "est")
+				.addAdiacenza("Aula N11", "atrio", "ovest")
+				.addAdiacenza("Aula N10", "atrio", "nord")
+				.addAdiacenza("Aula N10", "Aula N11", "est")
+				.addAdiacenza("Aula N10", "Laboratorio Campus", "ovest")
+				.addAdiacenza("Laboratorio Campus", "atrio", "est")
+				.addAdiacenza("Laboratorio Campus", "Aula N11", "ovest")
+				.addAdiacenza("Biblioteca", "atrio", "sud")
+				.getLabirinto();
+	
+		this.partita = new Partita(labirinto);
 		this.pala = new Attrezzo("pala", 8);
 		this.partita.getGiocatore().getBorsa().addAttrezzo(pala);
 	}
 	@Test
 	void assenzaInBorsaTest() {  	 //verifica che l'attrezzo sia stato levato dalla borsa correttamente
-		ComandoPosa cmd = new ComandoPosa(pala.getNome());
+		ComandoPosa cmd = new ComandoPosa("pala");
 		cmd.esegui(this.partita);
-		assertFalse(this.partita.getGiocatore().getBorsa().hasAttrezzo(pala.getNome()),"mi aspettavo che l'attrezzo non fosse presente nella borsa");
+		assertFalse(this.partita.getGiocatore().getBorsa().hasAttrezzo("pala"),"mi aspettavo che l'attrezzo non fosse presente nella borsa");
 	}
 	
 	@Test

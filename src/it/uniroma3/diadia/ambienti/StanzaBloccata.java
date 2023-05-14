@@ -1,14 +1,14 @@
 package it.uniroma3.diadia.ambienti;
-import it.uniroma3.diadia.attrezzi.Attrezzo;
+
 
 public class StanzaBloccata extends Stanza{
 
 	private String attrezzoSbloccante;
 	private String direzioneBloccata;
 	
-	public StanzaBloccata(String nome,Attrezzo attrezzo, String direzione) {
+	public StanzaBloccata(String nome,String attrezzo, String direzione) {
 		super(nome);
-		this.attrezzoSbloccante = attrezzo.getNome();
+		this.attrezzoSbloccante = attrezzo;
 		this.direzioneBloccata = direzione;
 	}
 

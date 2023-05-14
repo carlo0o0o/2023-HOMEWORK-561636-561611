@@ -1,14 +1,16 @@
 package it.uniroma3.diadia;
 
+import java.util.List;
+
 public class IOSimulator implements IO{
 
 	//private String ultimoMessaggio;
 	//private IO io = new IOConsole();
 	
-	private String[] elencoComandi;
+	private List<String> elencoComandi;
 	private int indiceComando = 0;
 	
-	public IOSimulator(String[] elencoComandi) {
+	public IOSimulator(List<String> elencoComandi) {
 		this.elencoComandi = elencoComandi;
 	}
 	
@@ -20,10 +22,10 @@ public class IOSimulator implements IO{
 
 	@Override
 	public String leggiRiga() {
-		if(indiceComando>=elencoComandi.length) {
+		if(indiceComando>=elencoComandi.size()) {
 			return "fine";
 		}
-		return elencoComandi[indiceComando++];
+		return elencoComandi.get(indiceComando++);
 	}
 //	public String getUltimoMessaggio() {
 //		return ultimoMessaggio;

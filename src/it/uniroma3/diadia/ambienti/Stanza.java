@@ -68,6 +68,9 @@ public class Stanza {
     	this.stanzeAdiacenti.put(direzione, stanza);
     	
     }
+    public HashMap<String, Stanza> getMapStanzeAdiacenti(){
+    	return stanzeAdiacenti;
+    }
 
     /**
      * Restituisce la stanza adiacente nella direzione specificata
@@ -100,10 +103,7 @@ public class Stanza {
     public HashMap<String, Attrezzo> getAttrezzi() {
         return this.attrezzi;
     }
-
-    
-    
-    
+   
     /**
      * Mette un attrezzo nella stanza.
      * @param attrezzo l'attrezzo da mettere nella stanza.

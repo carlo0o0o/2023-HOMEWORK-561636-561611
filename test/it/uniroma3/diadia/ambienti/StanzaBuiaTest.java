@@ -12,7 +12,7 @@ class StanzaBuiaTest {
 	@BeforeEach
 	public void setUp() {
 		this.lanterna = new Attrezzo("lanterna", 4);
-		this.stanzaTest = new StanzaBuia("stanzaTest",lanterna);
+		this.stanzaTest = new StanzaBuia("stanzaTest","lanterna");
 	}
 	@Test   //quando la stanza è buia
 	void getDescrizione() {
