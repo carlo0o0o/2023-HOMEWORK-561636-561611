@@ -22,7 +22,7 @@ class LabirintoBuilder1Test {
 				.addAdiacenza("biblioteca", "atrio", "nord")
 				.addStanza("campus")
 				.addAttrezzo("chiave", 2)
-				.addStanzaBloccata("bloccata","chiave" , "ovest")
+				.addStanzaBloccata("bloccata", "ovest", "chiave" )
 				.addAttrezzo("lanterna", 6)
 				.addAdiacenza("atrio", "campus", "est")
 				.addStanzaBuia("buia", "lanterna")

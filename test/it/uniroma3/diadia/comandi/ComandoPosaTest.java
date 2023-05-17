@@ -23,7 +23,7 @@ class ComandoPosaTest {
 				.addAttrezzo("osso",1)
 				.addAttrezzo("passepartout", 4)
 				.addStanzaBuia("Aula N11","lanterna")
-				.addStanzaBloccata("Aula N10", "passepartout", "ovest")
+				.addStanzaBloccata("Aula N10", "ovest", "passepartout")
 				.addAttrezzo("lanterna", 3)
 				.addStanzaMagica("Laboratorio Campus", 1)
 				.addStanzaVincente("Biblioteca")

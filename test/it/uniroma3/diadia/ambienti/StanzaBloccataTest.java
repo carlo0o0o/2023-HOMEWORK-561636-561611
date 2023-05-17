@@ -14,7 +14,7 @@ class StanzaBloccataTest {
 	@BeforeEach
 	public void setUp() {
 		this.chiave = new Attrezzo("chiave", 3);
-		this.stanza = new StanzaBloccata("stanza", "chiave", "ovest");
+		this.stanza = new StanzaBloccata("stanza", "ovest", "chiave");
 		this.stanza2 = new Stanza("stanza2");
 		
 	}

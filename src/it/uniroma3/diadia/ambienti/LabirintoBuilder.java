@@ -92,8 +92,8 @@ public class LabirintoBuilder {
 		return this;
 	}
 
-	public LabirintoBuilder addStanzaBloccata(String nomeStanza, String attrezzo,String direzione)  {
-		this.ultimaStanzaCreata = makeStanzaBloccata(nomeStanza, attrezzo, direzione);
+	public LabirintoBuilder addStanzaBloccata(String nomeStanza, String direzione, String attrezzo)  {
+		this.ultimaStanzaCreata = makeStanzaBloccata(nomeStanza, direzione, attrezzo);
 		return this;
 	}
 
@@ -122,12 +122,12 @@ public class LabirintoBuilder {
 		return stanza;
 	}
 
-	private Stanza makeStanzaBloccata(String nome, String attrezzo, String direzione) {
+	private Stanza makeStanzaBloccata(String nome, String direzione, String attrezzo) {
 
 		if(mStanze.containsKey(nome)) {
 			return mStanze.get(nome);
 		}
-		Stanza stanza = new StanzaBloccata(nome,attrezzo,direzione);
+		Stanza stanza = new StanzaBloccata(nome,direzione,attrezzo);
 		mStanze.put(nome, stanza);
 		return stanza;
 	}

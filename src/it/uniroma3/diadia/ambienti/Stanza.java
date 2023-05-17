@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import it.uniroma3.diadia.IOConsole;
@@ -29,7 +30,7 @@ public class Stanza {
 	
 	protected String nome;
 	protected IOConsole io = new IOConsole();
-    protected HashMap<String, Attrezzo> attrezzi;
+    protected ArrayList<Attrezzo> attrezzi;
     protected int numeroAttrezzi;
     
     protected HashMap<String, Stanza> stanzeAdiacenti;
@@ -49,7 +50,9 @@ public class Stanza {
         this.numeroAttrezzi = 0;
  //       this.direzioni = new ArrayList<>();
         this.stanzeAdiacenti = new HashMap<>();
-        this.attrezzi = new HashMap<>();
+        //this.attrezzi = new HashMap<>();
+        this.attrezzi = new ArrayList<>();
+
     }
     
   
@@ -64,8 +67,10 @@ public class Stanza {
      * @param stanza stanza adiacente nella direzione indicata dal primo parametro.
      */
     public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
-        
-    	this.stanzeAdiacenti.put(direzione, stanza);
+    	if(direzione.equalsIgnoreCase("nord") || direzione.equalsIgnoreCase("sud") || direzione.equalsIgnoreCase("est") || direzione.equalsIgnoreCase("ovest")) {
+    		this.stanzeAdiacenti.put(direzione, stanza);
+    	}
+    	
     	
     }
     public HashMap<String, Stanza> getMapStanzeAdiacenti(){
@@ -77,7 +82,10 @@ public class Stanza {
      * @param direzione
      */
 	public Stanza getStanzaAdiacente(String direzione) {
-        return this.stanzeAdiacenti.get(direzione);
+		if(direzione.equalsIgnoreCase("nord") || direzione.equalsIgnoreCase("sud") || direzione.equalsIgnoreCase("est") || direzione.equalsIgnoreCase("ovest")) {
+			return this.stanzeAdiacenti.get(direzione);
+		}
+		return null;
 	}
 
     /**
@@ -100,7 +108,7 @@ public class Stanza {
      * Restituisce la collezione di attrezzi presenti nella stanza.
      * @return la collezione di attrezzi nella stanza.
      */
-    public HashMap<String, Attrezzo> getAttrezzi() {
+    public ArrayList<Attrezzo> getAttrezzi() {
         return this.attrezzi;
     }
    
@@ -111,11 +119,11 @@ public class Stanza {
      */
     public boolean addAttrezzo(Attrezzo attrezzo) {
         
-    	if(attrezzi.containsKey(attrezzo.getNome())) {
+    	if(attrezzi.contains(attrezzo)) {
     		return false;
     	}
     	else {
-    		this.attrezzi.put(attrezzo.getNome(), attrezzo);
+    		this.attrezzi.add(attrezzo);
     	return true;
     	}
     }
@@ -131,7 +139,10 @@ public class Stanza {
     	risultato.append("\nUscite: ");
     	risultato.append(" " + this.stanzeAdiacenti.keySet());
     	risultato.append("\nAttrezzi nella stanza: ");
-    	risultato.append(this.attrezzi.values()+" ");
+    	for(Attrezzo a : this.attrezzi) {
+    		risultato.append(a.getNome() + " ");
+    	}
+    	//risultato.append(this.attrezzi.values()+" ");
  
     	return risultato.toString();
     }
@@ -141,7 +152,14 @@ public class Stanza {
 	* @return true se l'attrezzo esiste nella stanza, false altrimenti.
 	*/
 	public boolean hasAttrezzo(String nomeAttrezzo) {
-		return attrezzi.containsKey(nomeAttrezzo);
+		
+		for(Attrezzo a : this.attrezzi) {
+			if(a.getNome().equals(nomeAttrezzo)) {
+				return true;
+			}
+		}
+		return false;
+		//return attrezzi.containsKey(nomeAttrezzo);
 	}
 
 	/**
@@ -151,7 +169,14 @@ public class Stanza {
      * 		   null se l'attrezzo non e' presente.
 	 */
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
-		return attrezzi.get(nomeAttrezzo);	
+		
+		for(Attrezzo a : this.attrezzi) {
+			if(a.getNome().equals(nomeAttrezzo)) {
+				return a;
+			}
+		}
+		return null;
+		//return attrezzi.get(nomeAttrezzo);	
 	}
 
 	/**
@@ -160,20 +185,46 @@ public class Stanza {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		
-		if(this.attrezzi.containsKey(attrezzo.getNome())) {
-			attrezzi.remove(attrezzo.getNome());
-			return true;
+		for(Attrezzo a : this.attrezzi) {
+			if(a.getNome().equals(attrezzo.getNome())) {
+				attrezzi.remove(a);
+				return true;
+			}
 		}
-		else {
-			return false;
-		}
+		return false;
 		
 	}
 
 
-	public Set<String> getDirezioni() {
-		return stanzeAdiacenti.keySet();
+	public List<String> getDirezioni() {
+		return new ArrayList(stanzeAdiacenti.keySet());
     }
+
+
+
+
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nome);
+	}
+
+
+
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		Stanza other = (Stanza) obj;
+		return Objects.equals(nome, other.nome);
+	}
+	
+	
 
 }
