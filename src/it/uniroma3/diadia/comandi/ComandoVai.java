@@ -10,9 +10,13 @@ public class ComandoVai implements Comando {
 	private String direzione;
 	private String nome = "ComandoVai";
 	
-	public ComandoVai(String direzione) {
-		this.direzione = direzione;
-	}
+//	public ComandoVai() {
+//		
+//	}
+	
+//	public ComandoVai(String direzione) {
+//		this.direzione = direzione;
+//	}
 
 	@Override
 	public void esegui(Partita partita) {

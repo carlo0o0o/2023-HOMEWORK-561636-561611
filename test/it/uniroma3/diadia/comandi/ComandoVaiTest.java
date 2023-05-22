@@ -43,7 +43,8 @@ class ComandoVaiTest {
 	@Test
 	void vaiNord() {
 		String stanzaAttesa = this.partita.getStanzaCorrente().getStanzaAdiacente("nord").getNome();
-		ComandoVai cmd = new ComandoVai("nord");
+		ComandoVai cmd = new ComandoVai();
+		cmd.setParametro("nord");
 		cmd.esegui(this.partita);
 		assertTrue(this.partita.getStanzaCorrente().getNome().equals(stanzaAttesa), "mi aspettavo di stare in "+stanzaAttesa+" ma mi trovo in "+this.partita.getStanzaCorrente().getNome());
 	}

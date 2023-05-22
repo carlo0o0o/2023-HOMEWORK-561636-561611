@@ -10,6 +10,9 @@ public class ComandoPrendi implements Comando{
 	private String attrezzo;
 	private String nome = "ComandoPrendi";
 	
+	public ComandoPrendi() {
+		
+	}
 	public ComandoPrendi(String attrezzo) {
 		this.attrezzo = attrezzo;
 	}

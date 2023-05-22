@@ -5,9 +5,11 @@ import java.util.Scanner;
 public class IOConsole implements IO{
 	Scanner scannerDiLinee = new Scanner(System.in);
 	
+	@Override
 	public void mostraMessaggio(String msg) {
 		System.out.println(msg);
 	}
+	@Override
 	public String leggiRiga() {
 		String riga = scannerDiLinee.nextLine();
 		return riga;

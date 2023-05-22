@@ -99,5 +99,4 @@ class IOSimulatorTest {
 		assertTrue(gioco.getPartita().getStanzaCorrente().getNome().equalsIgnoreCase("aula n11"));
 	} 
 	
-
 }

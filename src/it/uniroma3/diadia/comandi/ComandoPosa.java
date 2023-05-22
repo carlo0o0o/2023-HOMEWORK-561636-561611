@@ -11,6 +11,10 @@ public class ComandoPosa implements Comando {
 	private String attrezzo;
 	private String nome = "ComandoPosa";
 	
+	public ComandoPosa() {
+		
+	}
+	
 	public ComandoPosa(String attrezzo) {
 		this.attrezzo = attrezzo;
 	}
