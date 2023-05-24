@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+import it.uniroma3.diadia.Direzione;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
@@ -30,7 +31,7 @@ public class Stanza {
 	protected IOConsole io = new IOConsole();
 	protected ArrayList<Attrezzo> attrezzi;
 	protected int numeroAttrezzi;
-	protected HashMap<String, Stanza> stanzeAdiacenti;
+	protected HashMap<Direzione, Stanza> stanzeAdiacenti;
 	protected int numeroStanzeAdiacenti;
 	protected AbstractPersonaggio personaggio1 = null;
 
@@ -61,20 +62,15 @@ public class Stanza {
 	 * @param direzione direzione in cui sara' posta la stanza adiacente.
 	 * @param stanza stanza adiacente nella direzione indicata dal primo parametro.
 	 */
-	public void impostaStanzaAdiacente(String direzione, Stanza stanza) {
-		if(direzione.equalsIgnoreCase("nord") || direzione.equalsIgnoreCase("sud") || direzione.equalsIgnoreCase("est") || direzione.equalsIgnoreCase("ovest")) {
+	public void impostaStanzaAdiacente(Direzione direzione, Stanza stanza) {
+		//if(direzione.equalsIgnoreCase("nord") || direzione.equalsIgnoreCase("sud") || direzione.equalsIgnoreCase("est") || direzione.equalsIgnoreCase("ovest")) {
+		if((stanza!=null)&&(!this.nome.equalsIgnoreCase(stanza.getNome()))) {
 			this.stanzeAdiacenti.put(direzione, stanza);
 		}
 
 
 	}
-	public HashMap<String, Stanza> getMapStanzeAdiacenti(){
-		
-		HashMap<String, Stanza> ordinata = new HashMap<>();
-		 for(String s: stanzeAdiacenti.keySet()) {
-			
-		}
-		
+	public HashMap<Direzione, Stanza> getMapStanzeAdiacenti(){
 		return stanzeAdiacenti;
 	}
 
@@ -82,11 +78,8 @@ public class Stanza {
 	 * Restituisce la stanza adiacente nella direzione specificata
 	 * @param direzione
 	 */
-	public Stanza getStanzaAdiacente(String direzione) {
-		if(direzione.equalsIgnoreCase("nord") || direzione.equalsIgnoreCase("sud") || direzione.equalsIgnoreCase("est") || direzione.equalsIgnoreCase("ovest")) {
+	public Stanza getStanzaAdiacente(Direzione direzione) {
 			return this.stanzeAdiacenti.get(direzione);
-		}
-		return null;
 	}
 
 	/**

@@ -1,6 +1,7 @@
 package it.uniroma3.diadia;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.LabirintoBuilder;
+import static it.uniroma3.diadia.Direzione.*;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
 
@@ -83,15 +84,15 @@ public class DiaDia {
 				.addAttrezzo("croccantini", 0)
 				.addAttrezzo("lanterna", 2)
 				.addPersonaggio("strega", "artemisia" , "\nsono una strega ti trasferisco!")
-				.addStanzaBloccata("bloccata", "nord", "lanterna")
+				.addStanzaBloccata("bloccata", NORD, "lanterna")
 				.addPersonaggio("mago", "lupino", "mago lupino se mi regali un attrezzo te lo modifico!!")
-				.addAdiacenza("atrio", "stanzabloccata", "nord")
+				.addAdiacenza("atrio", "stanzabloccata", NORD)
 				.addStanzaVincente("cucina")
-				.addAdiacenza("atrio", "cucina", "sud")
+				.addAdiacenza("atrio", "cucina", SUD)
 				.addStanzaBuia("bagno","lanterna")
 				.addPersonaggio("cane", "rubber", "dammi croccantini o ti levo i cfu§!")
 				.addAttrezzo("profumo", 1)
-				.addAdiacenza("atrio", "bagno", "est")
+				.addAdiacenza("atrio", "bagno", EST)
 				.getLabirinto();
 		DiaDia gioco = new DiaDia(labirinto, io);
 		gioco.gioca();

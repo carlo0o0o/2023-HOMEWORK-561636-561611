@@ -1,14 +1,13 @@
 package it.uniroma3.diadia.ambienti;
 
-import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
-import it.uniroma3.diadia.personaggi.Cane;
+import it.uniroma3.diadia.Direzione;
 
 public class StanzaBloccata extends Stanza{
 
 	private String attrezzoSbloccante;
-	private String direzioneBloccata;
+	private Direzione direzioneBloccata;
 	
-	public StanzaBloccata(String nome,String direzione, String attrezzo) {
+	public StanzaBloccata(String nome,Direzione direzione, String attrezzo) {
 		super(nome);
 		this.attrezzoSbloccante = attrezzo;
 		this.direzioneBloccata = direzione;
@@ -21,7 +20,7 @@ public class StanzaBloccata extends Stanza{
 //	}
 	
 	@Override
-	public Stanza getStanzaAdiacente(String dir) {
+	public Stanza getStanzaAdiacente(Direzione dir) {
 		if((dir.equals(direzioneBloccata)) && !hasAttrezzo(attrezzoSbloccante)) {
 			io.mostraMessaggio("direzione bloccata sei rimasto io stanza: "+this.getNome());
 			return this;

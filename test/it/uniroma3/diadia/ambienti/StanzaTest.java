@@ -3,6 +3,7 @@ package it.uniroma3.diadia.ambienti;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
+import static it.uniroma3.diadia.Direzione.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -32,22 +33,22 @@ class StanzaTest {
 	
 	@Test
 	public void impostaStanzaAdiacenteTest() {
-		s1.impostaStanzaAdiacente("nord", s2);
-		assertTrue(s1.getStanzaAdiacente("nord").equals(s2));
+		s1.impostaStanzaAdiacente(NORD, s2);
+		assertTrue(s1.getStanzaAdiacente(NORD).equals(s2));
 	}
 	@Test
 	public void impostaStanzaAdiacentedueTest() {
-		s1.impostaStanzaAdiacente("nord", s3);
-		s1.impostaStanzaAdiacente("sud", s4);
-		assertTrue(s1.getStanzaAdiacente("nord").getNome().equals(s3.getNome()));
+		s1.impostaStanzaAdiacente(NORD, s3);
+		s1.impostaStanzaAdiacente(SUD, s4);
+		assertTrue(s1.getStanzaAdiacente(NORD).getNome().equals(s3.getNome()));
 	}
 	
 	@Test
 	public void impostaAltraStanzaAdiacenteTest() {            //correggere lo scorrimento della collezione ritorna solo la prima stanza
-		s1.impostaStanzaAdiacente("sud", s4);
-		s1.impostaStanzaAdiacente("nord", s2);
-		s1.impostaStanzaAdiacente("est", s3);
-		assertTrue(s1.getStanzaAdiacente("est").equals(s3));  
+		s1.impostaStanzaAdiacente(SUD, s4);
+		s1.impostaStanzaAdiacente(NORD, s2);
+		s1.impostaStanzaAdiacente(EST, s3);
+		assertTrue(s1.getStanzaAdiacente(EST).equals(s3));  
 	}
 
 	@Test
@@ -68,7 +69,7 @@ class StanzaTest {
 	
 	@Test
 	public void testGetStanzaAdiacente() {
-		assertNull(s1.getStanzaAdiacente("sud"));
+		assertNull(s1.getStanzaAdiacente(SUD));
 	}
 	
 }

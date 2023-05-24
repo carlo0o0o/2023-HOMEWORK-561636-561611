@@ -3,8 +3,8 @@ package it.uniroma3.diadia.ambienti;
 import java.util.HashMap;
 import java.util.Map;
 
+import it.uniroma3.diadia.Direzione;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 import it.uniroma3.diadia.personaggi.Cane;
 import it.uniroma3.diadia.personaggi.Mago;
 import it.uniroma3.diadia.personaggi.Strega;
@@ -47,7 +47,7 @@ public class LabirintoBuilder {
 		return this;
 	}
 
-	public LabirintoBuilder addAdiacenza(String stanza, String adiacente, String direzione) {
+	public LabirintoBuilder addAdiacenza(String stanza, String adiacente, Direzione direzione) {
 		Stanza partenza = null;
 		Stanza adiacente1 = null;
 
@@ -63,18 +63,18 @@ public class LabirintoBuilder {
 		}
 //		if(partenza.getStanzaAdiacente(direzione) == null) {            
 			partenza.impostaStanzaAdiacente(direzione, adiacente1);
-			if(direzione.equals("nord")) {
-				adiacente1.impostaStanzaAdiacente("sud", partenza);
-			}
-			if(direzione.equals("sud")) {
-				adiacente1.impostaStanzaAdiacente("nord", partenza);
-			}
-			if(direzione.equals("est")) {
-				adiacente1.impostaStanzaAdiacente("ovest", partenza);
-			}
-			if(direzione.equals("ovest")) {
-				adiacente1.impostaStanzaAdiacente("est", partenza);
-			}
+//			if(direzione.equals("nord")) {
+//				adiacente1.impostaStanzaAdiacente("sud", partenza);
+//			}
+//			if(direzione.equals("sud")) {
+//				adiacente1.impostaStanzaAdiacente("nord", partenza);
+//			}
+//			if(direzione.equals("est")) {
+//				adiacente1.impostaStanzaAdiacente("ovest", partenza);
+//			}
+//			if(direzione.equals("ovest")) {
+//				adiacente1.impostaStanzaAdiacente("est", partenza);
+//			}
 //		}
 
 		return this;
@@ -105,7 +105,7 @@ public class LabirintoBuilder {
 		return this;
 	}
 
-	public LabirintoBuilder addStanzaBloccata(String nomeStanza, String direzione, String attrezzo)  {
+	public LabirintoBuilder addStanzaBloccata(String nomeStanza, Direzione direzione, String attrezzo)  {
 		this.ultimaStanzaCreata = makeStanzaBloccata(nomeStanza, direzione, attrezzo);
 		return this;
 	}
@@ -135,7 +135,7 @@ public class LabirintoBuilder {
 		return stanza;
 	}
 
-	private Stanza makeStanzaBloccata(String nome, String direzione, String attrezzo) {
+	private Stanza makeStanzaBloccata(String nome, Direzione direzione, String attrezzo) {
 
 		if(mStanze.containsKey(nome)) {
 			return mStanze.get(nome);

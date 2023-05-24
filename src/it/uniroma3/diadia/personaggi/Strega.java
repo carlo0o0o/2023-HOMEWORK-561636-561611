@@ -1,4 +1,5 @@
 package it.uniroma3.diadia.personaggi;
+import it.uniroma3.diadia.Direzione;
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.Partita;
@@ -23,7 +24,7 @@ public class Strega extends AbstractPersonaggio{
 			//trasferisci nella stanza con piu attrezzi;
 			int numeroMax=0;
 			Stanza nuova = null;
-			for(String s : partita.getStanzaCorrente().getMapStanzeAdiacenti().keySet()) {
+			for(Direzione s : partita.getStanzaCorrente().getMapStanzeAdiacenti().keySet()) {
 				int att = partita.getStanzaCorrente().getMapStanzeAdiacenti().get(s).getAttrezzi().size();
 					if(att>numeroMax) {
 						numeroMax = partita.getStanzaCorrente().getMapStanzeAdiacenti().get(s).getAttrezzi().size();
@@ -36,7 +37,7 @@ public class Strega extends AbstractPersonaggio{
 			//trasferisci nella stanza con meno attrezzi;
 			int numeroMin=500;
 			Stanza nuova = null;
-			for(String s : partita.getStanzaCorrente().getMapStanzeAdiacenti().keySet()) {
+			for(Direzione s : partita.getStanzaCorrente().getMapStanzeAdiacenti().keySet()) {
 				int att = partita.getStanzaCorrente().getMapStanzeAdiacenti().get(s).getAttrezzi().size();
 					if(att<numeroMin) {
 						numeroMin = partita.getStanzaCorrente().getMapStanzeAdiacenti().get(s).getAttrezzi().size();

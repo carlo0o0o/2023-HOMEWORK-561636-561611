@@ -6,10 +6,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static it.uniroma3.diadia.Direzione.*;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 class LabirintoBuilder1Test {
 	
+
 	Labirinto labirinto;
 
 	@BeforeEach
@@ -19,16 +21,16 @@ class LabirintoBuilder1Test {
 				.addAttrezzo("pala", 10)
 				.addAttrezzo("martello", 3)
 				.addStanza("atrio")
-				.addAdiacenza("biblioteca", "atrio", "nord")
+				.addAdiacenza("biblioteca", "atrio", NORD)
 				.addStanza("campus")
 				.addAttrezzo("chiave", 2)
-				.addStanzaBloccata("bloccata", "ovest", "chiave" )
+				.addStanzaBloccata("bloccata", OVEST, "chiave" )
 				.addAttrezzo("lanterna", 6)
-				.addAdiacenza("atrio", "campus", "est")
+				.addAdiacenza("atrio", "campus", EST)
 				.addStanzaBuia("buia", "lanterna")
 				.addAttrezzo("lanterna", 1)
-				.addAdiacenza("campus", "bloccata","nord")
-				.addAdiacenza("bloccata", "buia", "ovest")
+				.addAdiacenza("campus", "bloccata",NORD)
+				.addAdiacenza("bloccata", "buia", OVEST)
 				.getLabirinto();
 	}
 	
@@ -45,15 +47,15 @@ class LabirintoBuilder1Test {
 	@Test
 	void adiacenzeTest() {
 		assertEquals("biblioteca",labirinto.getIngresso().getNome());
-		assertEquals("atrio", labirinto.getIngresso().getStanzaAdiacente("nord").getNome());
-		assertEquals("campus", labirinto.getIngresso().getStanzaAdiacente("nord").getStanzaAdiacente("est").getNome());
+		assertEquals("atrio", labirinto.getIngresso().getStanzaAdiacente(NORD).getNome());
+		assertEquals("campus", labirinto.getIngresso().getStanzaAdiacente(NORD).getStanzaAdiacente(EST).getNome());
 	}
 	
 	@Test
 	void buiaBloccataTest() {
 		Attrezzo chiave = new Attrezzo("chiave", 2);
-		assertEquals("bloccata", labirinto.getIngresso().getStanzaAdiacente("nord").getStanzaAdiacente("est").getStanzaAdiacente("nord").getStanzaAdiacente("ovest").getNome());
-		assertTrue(labirinto.getIngresso().getStanzaAdiacente("nord").getStanzaAdiacente("est").getStanzaAdiacente("nord").addAttrezzo(chiave));
+		assertEquals("bloccata", labirinto.getIngresso().getStanzaAdiacente(NORD).getStanzaAdiacente(EST).getStanzaAdiacente(NORD).getStanzaAdiacente(OVEST).getNome());
+		assertTrue(labirinto.getIngresso().getStanzaAdiacente(NORD).getStanzaAdiacente(EST).getStanzaAdiacente(NORD).addAttrezzo(chiave));
 	}
 	
 
