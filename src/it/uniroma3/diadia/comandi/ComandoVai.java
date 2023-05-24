@@ -4,19 +4,19 @@ import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.IO;
 
-public class ComandoVai implements Comando {
+public class ComandoVai extends AbstractComando {
 	
 	private IO io = new IOConsole();
 	private String direzione;
 	private String nome = "ComandoVai";
 	
-//	public ComandoVai() {
-//		
-//	}
+	public ComandoVai() {
+		
+	}
 	
-//	public ComandoVai(String direzione) {
-//		this.direzione = direzione;
-//	}
+	public ComandoVai(String direzione) {
+		this.direzione = direzione;
+	}
 
 	@Override
 	public void esegui(Partita partita) {

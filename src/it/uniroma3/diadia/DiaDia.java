@@ -21,7 +21,7 @@ public class DiaDia {
 	static final private String MESSAGGIO_BENVENUTO = ""+
 			"Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n" +
 			"Meglio andare al piu' presto in biblioteca a studiare. Ma dov'e'?\n"+
-			"I locali sono popolati da strani personaggi, " +
+			"I locali sono popolati da strani it.uniroma3.diadia.personaggi, " +
 			"alcuni amici, altri... chissa!\n"+
 			"Ci sono attrezzi che potrebbero servirti nell'impresa:\n"+
 			"puoi raccoglierli, usarli, posarli quando ti sembrano inutili\n" +
@@ -80,15 +80,19 @@ public class DiaDia {
 		Labirinto labirinto=new LabirintoBuilder()   
 				.addStanzaIniziale("atrio")
 				.addAttrezzo("pala", 2)
-				.addStanza("salotto")
-				.addAdiacenza("atrio", "salotto", "nord")
+				.addAttrezzo("croccantini", 0)
+				.addAttrezzo("lanterna", 2)
+				.addPersonaggio("strega", "artemisia" , "\nsono una strega ti trasferisco!")
+				.addStanzaBloccata("bloccata", "nord", "lanterna")
+				.addPersonaggio("mago", "lupino", "mago lupino se mi regali un attrezzo te lo modifico!!")
+				.addAdiacenza("atrio", "stanzabloccata", "nord")
 				.addStanzaVincente("cucina")
-				.addStanza("bagno")
+				.addAdiacenza("atrio", "cucina", "sud")
+				.addStanzaBuia("bagno","lanterna")
+				.addPersonaggio("cane", "rubber", "dammi croccantini o ti levo i cfu§!")
 				.addAttrezzo("profumo", 1)
-				.addAdiacenza("salotto", "bagno", "est")
+				.addAdiacenza("atrio", "bagno", "est")
 				.getLabirinto();
-		
-		
 		DiaDia gioco = new DiaDia(labirinto, io);
 		gioco.gioca();
 	}

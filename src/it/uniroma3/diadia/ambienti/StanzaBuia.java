@@ -1,5 +1,6 @@
 package it.uniroma3.diadia.ambienti;
-import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
+import it.uniroma3.diadia.personaggi.Cane;
 
 public class StanzaBuia extends Stanza{
 	
@@ -10,7 +11,6 @@ public class StanzaBuia extends Stanza{
         super(nome);
         this.attrezzoIlluminatore = attrezzo;    //li prende correttamente
     }
-    
     
     @Override
     public String getDescrizione() {

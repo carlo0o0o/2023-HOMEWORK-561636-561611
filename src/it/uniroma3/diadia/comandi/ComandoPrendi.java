@@ -4,7 +4,7 @@ import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.IO;
 
-public class ComandoPrendi implements Comando{
+public class ComandoPrendi extends AbstractComando{
 	
 	private IO io = new IOConsole();
 	private String attrezzo;

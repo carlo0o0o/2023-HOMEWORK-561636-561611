@@ -5,7 +5,7 @@ import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.IO;
 
 
-public class ComandoPosa implements Comando {
+public class ComandoPosa extends AbstractComando {
 	
 	private IO io = new IOConsole();
 	private String attrezzo;

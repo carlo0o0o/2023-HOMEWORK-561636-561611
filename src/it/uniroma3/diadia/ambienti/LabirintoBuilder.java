@@ -1,11 +1,13 @@
 package it.uniroma3.diadia.ambienti;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
+import it.uniroma3.diadia.personaggi.Cane;
+import it.uniroma3.diadia.personaggi.Mago;
+import it.uniroma3.diadia.personaggi.Strega;
 
 //classe dedita alla creazione di oggetti labirinto
 public class LabirintoBuilder {
@@ -75,6 +77,17 @@ public class LabirintoBuilder {
 			}
 //		}
 
+		return this;
+	}
+	
+	public LabirintoBuilder addPersonaggio(String tipo, String nome, String presentazione) {
+		if(tipo.equalsIgnoreCase("strega")) {
+			this.ultimaStanzaCreata.addPersonaggio(new Strega(nome,presentazione));
+		}else if(tipo.equalsIgnoreCase("cane")) {
+			this.ultimaStanzaCreata.addPersonaggio(new Cane(nome, presentazione));
+		}else if(tipo.equalsIgnoreCase("mago")) {
+			this.ultimaStanzaCreata.addPersonaggio(new Mago(nome, presentazione));
+		}
 		return this;
 	}
 

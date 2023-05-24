@@ -23,7 +23,6 @@ public class Partita {
 	
 	public Partita(){
 		labirinto = new Labirinto();                     //inv labirinto
-		//labirinto.creaStanze();
 		giocatore = new Giocatore(); 
 		this.stanzaCorrente = this.labirinto.getIngresso();
 		this.finita = false;
