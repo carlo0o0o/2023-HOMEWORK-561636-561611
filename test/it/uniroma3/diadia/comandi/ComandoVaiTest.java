@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import static it.uniroma3.diadia.Direzione.*;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 
 class ComandoVaiTest {
 	
@@ -15,7 +14,7 @@ class ComandoVaiTest {
 	
 	@BeforeEach
 	public void setUp() {
-		Labirinto labirinto = new LabirintoBuilder()
+		Labirinto labirinto = new Labirinto.LabirintoBuilder()
 				.addStanzaIniziale("atrio")
 				.addAttrezzo("osso",1)
 				.addAttrezzo("passepartout", 4)

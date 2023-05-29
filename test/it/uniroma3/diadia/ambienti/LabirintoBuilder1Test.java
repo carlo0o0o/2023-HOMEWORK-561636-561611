@@ -16,7 +16,7 @@ class LabirintoBuilder1Test {
 
 	@BeforeEach
 	public void setUp() {
-		this.labirinto = new LabirintoBuilder()
+		this.labirinto = new Labirinto.LabirintoBuilder()
 				.addStanzaIniziale("biblioteca")
 				.addAttrezzo("pala", 10)
 				.addAttrezzo("martello", 3)

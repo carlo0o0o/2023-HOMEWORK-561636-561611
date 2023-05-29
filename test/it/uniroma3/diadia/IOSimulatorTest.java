@@ -8,14 +8,13 @@ import static it.uniroma3.diadia.Direzione.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 
 class IOSimulatorTest {
 
 	private Labirinto labirinto = null;
 	@BeforeEach
 	public void setUp() {
-		this.labirinto = new LabirintoBuilder()
+		this.labirinto = new Labirinto.LabirintoBuilder()
 				.addStanzaIniziale("atrio")
 				.addAttrezzo("osso",1)
 				.addAttrezzo("passepartout", 4)

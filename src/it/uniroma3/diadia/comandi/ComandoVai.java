@@ -1,6 +1,5 @@
 package it.uniroma3.diadia.comandi;
 import static it.uniroma3.diadia.Direzione.*;
-
 import it.uniroma3.diadia.Direzione;
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
@@ -47,7 +46,7 @@ public class ComandoVai extends AbstractComando {
 			direzione = SUD;
 		}else if(parametro.equalsIgnoreCase("est")) {
 			direzione = EST;
-		}else if(parametro.equalsIgnoreCase("ovest")) {
+		}else if(parametro.equalsIgnoreCase("ovest")) {  
 			direzione = OVEST;
 		}
 	}

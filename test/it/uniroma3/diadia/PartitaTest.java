@@ -1,10 +1,9 @@
 package it.uniroma3.diadia;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
-import org.junit.validator.PublicClassValidator;
+import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.giocatore.Giocatore;
@@ -24,9 +23,9 @@ class PartitaTest {
 	}
 	
 	
-//	@Test 
-//	public void testIsFinita() {
-//		assertEquals(false, partita.isFinita());
-//	}
+	@Test 
+	public void testIsFinita() {
+		assertEquals(true, partita.isFinita());
+	}
 
 }

@@ -1,6 +1,6 @@
 package it.uniroma3.diadia;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
+//import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import static it.uniroma3.diadia.Direzione.*;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
@@ -78,7 +78,7 @@ public class DiaDia {
 		
 		IO io = new IOConsole();
 
-		Labirinto labirinto=new LabirintoBuilder()   
+		Labirinto labirinto=new Labirinto.LabirintoBuilder()   
 				.addStanzaIniziale("atrio")
 				.addAttrezzo("pala", 2)
 				.addAttrezzo("croccantini", 0)

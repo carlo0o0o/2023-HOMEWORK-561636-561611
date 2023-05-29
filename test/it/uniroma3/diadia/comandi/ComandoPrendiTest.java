@@ -1,8 +1,6 @@
 package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
-import it.uniroma3.diadia.giocatore.Borsa;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -19,7 +17,7 @@ class ComandoPrendiTest {
 	
 	@BeforeEach
 	public void setUp() {
-		this.labirinto = new LabirintoBuilder()
+		this.labirinto = new Labirinto.LabirintoBuilder()
 				.addStanzaIniziale("atrio")
 				.addAttrezzo("osso",1)
 				.addAttrezzo("passepartout", 4)
