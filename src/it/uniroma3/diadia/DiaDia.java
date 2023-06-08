@@ -1,7 +1,14 @@
 package it.uniroma3.diadia;
-import it.uniroma3.diadia.ambienti.Labirinto;
 //import it.uniroma3.diadia.ambienti.LabirintoBuilder;
-import static it.uniroma3.diadia.Direzione.*;
+import static it.uniroma3.diadia.Direzione.EST;
+import static it.uniroma3.diadia.Direzione.NORD;
+import static it.uniroma3.diadia.Direzione.SUD;
+
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+import it.uniroma3.diadia.ambienti.CaricatoreLabirinto;
+import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiRiflessiva;
 
@@ -75,8 +82,23 @@ public class DiaDia {
 
 
 	public static void main(String[] argc) {
+		Scanner scannerDiLinee = new Scanner(System.in);
+		IO io = new IOConsole(scannerDiLinee);
 		
-		IO io = new IOConsole();
+		try{
+			Labirinto labirinto = creaMappaDaFile("testLabirinto.txt");
+			DiaDia gioco = new DiaDia(labirinto,io);
+			gioco.gioca();
+			
+		} catch(FileNotFoundException e) {
+			io.mostraMessaggio("Errore nel caricamento del file del labirinto... non esiste!");
+		} catch(FormatoFileNonValidoException e) {
+			io.mostraMessaggio("Errore nel caricamento del file, il formato è errato!");
+		} catch(Exception e) {
+			io.mostraMessaggio("qualcosa è andato storto...");
+		} finally {
+			scannerDiLinee.close();
+		}
 
 		Labirinto labirinto=new Labirinto.LabirintoBuilder()   
 				.addStanzaIniziale("atrio")
@@ -96,5 +118,12 @@ public class DiaDia {
 				.getLabirinto();
 		DiaDia gioco = new DiaDia(labirinto, io);
 		gioco.gioca();
+	}
+	static public Labirinto creaMappaDaFile(String nomeFile) throws FormatoFileNonValidoException, FileNotFoundException {
+		final CaricatoreLabirinto caricatoreLabirinto = new CaricatoreLabirinto(nomeFile);
+		caricatoreLabirinto.carica();
+		final Labirinto lab = caricatoreLabirinto.getLabirinto();
+		lab.setNome(nomeFile);
+		return lab;
 	}
 }

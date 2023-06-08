@@ -41,4 +41,10 @@ public class Mago extends AbstractPersonaggio{
 		io.mostraMessaggio("ho ricevuto il tuo regalo...modifichero il peso e lo mettero nella stanza, poi potrai prenderlo");
 		return MESSAGGIO_RINGRAZIAMENTO;
 	}
+
+	
+	public Attrezzo getAttrezzo() {
+		return this.attrezzo;
+	}
+
 }

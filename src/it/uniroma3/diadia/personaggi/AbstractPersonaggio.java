@@ -13,6 +13,10 @@ public abstract class AbstractPersonaggio {
 		this.presentazione = presentaz;
 		this.haSalutato = false;
 	}
+	
+	public String getPresentazione() {
+		return this.presentazione;
+	}
 
 	public String getNome() {
 		return this.nome;

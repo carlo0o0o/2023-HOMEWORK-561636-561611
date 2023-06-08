@@ -4,6 +4,7 @@ import java.util.Map;
 
 import it.uniroma3.diadia.Direzione;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import it.uniroma3.diadia.personaggi.AbstractPersonaggio;
 import it.uniroma3.diadia.personaggi.Cane;
 import it.uniroma3.diadia.personaggi.Mago;
 import it.uniroma3.diadia.personaggi.Strega;
@@ -12,6 +13,7 @@ public class Labirinto {
 	
 	private Stanza stanzaIniziale;
 	private Stanza stanzaVincente;
+	private String nome;
 
     public void setStanzaVincente(Stanza stanza) {
     	this.stanzaVincente = stanza;
@@ -158,7 +160,52 @@ public class Labirinto {
 			mStanze.put(nome, stanza);
 			return stanza;
 		}
+		public Stanza getStanza(String nomeStanza) {
+			return this.mStanze.get(nomeStanza);
+		}
 
+		public Stanza getUltimaStanza() {
+			return this.ultimaStanzaCreata;
+		}
+		
+		public LabirintoBuilder addMago(String nomeMago, String presentazione, String stanza) {
+			if(stanza.equals(""))								
+				stanza = "non valida";
+			AbstractPersonaggio mago = new Mago(nomeMago, presentazione);
+
+			this.getStanza(stanza).setPersonaggio(mago);
+			
+			return this;
+		}
+		
+		public LabirintoBuilder addStrega(String nomeStrega, String presentazione, String stanza) {
+			if(stanza.equals(""))								
+				stanza = "non valido";
+			
+			AbstractPersonaggio strega = new Strega(nomeStrega, presentazione);
+			this.mStanze.get(stanza).setPersonaggio(strega);
+			
+			return this;
+		}
+		
+		public LabirintoBuilder addCane(String nomeStrega, String presentazione,  String stanza) {
+			if(stanza.equals(""))								
+				stanza = "non valido";
+			
+			AbstractPersonaggio cane = new Cane(nomeStrega, presentazione);
+			this.getStanza(stanza).setPersonaggio(cane);
+			
+			return this;
+		}
+
+	}
+	public static LabirintoBuilder newBuilder(){
+		return new LabirintoBuilder();
+		
+	}
+	
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 
